@@ -54,7 +54,9 @@ const Payments = () => {
     setFormData({ ...formData, bankName: selectedBank });
     if (selectedBank) {
       try {
-        const response = await axios.get(`/api/banks/${selectedBank}`);
+        const response = await axios.get(`/api/banks/${selectedBank}`, {
+          withCredentials: true, 
+        });
         setFormData((prevState) => ({ ...prevState, bankId: response.data.bankId }));
       } catch {
         setError('Error fetching bank ID');

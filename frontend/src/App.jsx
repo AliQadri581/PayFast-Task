@@ -4,7 +4,7 @@ import Payments from './Pages/Payments';
 import Transactions from './Pages/Transactions';
 
 
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://payfast-backend-eff4ad7c67a4.herokuapp.com';
 axios.defaults.withCredentials = true;
 
 function App() {

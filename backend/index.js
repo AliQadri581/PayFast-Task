@@ -15,22 +15,30 @@ connectDB()
 
  app.use(express.json())
  app.use(express.urlencoded({extended: true}))
-//  app.use(cookieParser())
 
- app.use(cors({
-    credentials:true,
-    origin:'http://localhost:5173'
-}))
+
+
+
+app.use(cors({
+  origin: 'https://payfast-frontend-143140646497.herokuapp.com',
+  credentials: true, 
+}));
+
+
 
  app.get("/", (req,res) =>{
     res.send("Hello Everyone")
+    axios.get('https://ifconfig.me').then(response => {
+      console.log("Ali Qadri here");
+      console.log('My public IP is:', response.data);
+    });
  })
 
 
 app.post('/api/payments', async (req, res) => {
   const { amount, email, address, bankId, cnic, mobileNumber, bankAccountNumber, bankName } = req.body;
 
-  // CNIC format validation
+
   const cnicRegex = /^[0-9]{5}-[0-9]{7}-[0-9]$/;
   if (!cnicRegex.test(cnic)) {
     return res.status(400).json({ error: 'Invalid CNIC format' });
@@ -112,6 +120,8 @@ app.post('/api/convert', async (req, res) => {
         res.status(404).json({ error: 'Bank not found' });
       }
     } catch (error) {
+      console.log(error)
+      console.log(error.message);
       res.status(500).json({ error: 'Error fetching bank data', details: error.message });
     }
   });

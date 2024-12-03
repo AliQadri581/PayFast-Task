@@ -15,4 +15,4 @@ const bankSchema = new mongoose.Schema({
 
 const Bank = mongoose.model('Bank', bankSchema);
 
-export default Bank;  // Default export
+export default Bank;  

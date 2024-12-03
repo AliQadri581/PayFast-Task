@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "serve -s dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -18,7 +19,8 @@
     "react-dom": "^18.3.1",
     "react-router": "^7.0.1",
     "react-router-dom": "^7.0.1",
-    "react-toastify": "^10.0.6"
+    "react-toastify": "^10.0.6",
+    "serve": "^14.2.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
